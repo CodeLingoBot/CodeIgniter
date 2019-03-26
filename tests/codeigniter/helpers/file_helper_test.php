@@ -88,34 +88,7 @@ class File_helper_Test extends CI_TestCase {
 		$this->_test_get_file_info(implode(', ', $vals));
 	}
 
-	private function _test_get_file_info($vals)
-	{
-		$content = 'Jack and Jill went up the mountain to fight a billy goat.';
-		$last_modified = time() - 86400;
-
-		$file = vfsStream::newFile('my_file.txt', 0777)
-			->withContent($content)
-			->lastModified($last_modified)
-			->at($this->_test_dir);
-
-		$ret_values = array(
-			'name'        => 'my_file.txt',
-			'server_path' => 'vfs://my_file.txt',
-			'size'        => 57,
-			'date'        => $last_modified,
-			'readable'    => TRUE,
-			'writable'    => TRUE,
-			'executable'  => TRUE,
-			'fileperms'   => 33279
-		);
-
-		$info = get_file_info(vfsStream::url('my_file.txt'), $vals);
-
-		foreach ($info as $k => $v)
-		{
-			$this->assertEquals($ret_values[$k], $v);
-		}
-	}
+	
 
 	// --------------------------------------------------------------------
 

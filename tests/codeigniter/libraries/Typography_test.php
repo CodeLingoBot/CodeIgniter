@@ -99,66 +99,27 @@ EOH;
 
 	// --------------------------------------------------------------------
 
-	private function _blank_string()
-	{
-		// Test blank string
-		$this->assertEquals('', $this->type->auto_typography(''));
-	}
+	
 
 	// --------------------------------------------------------------------
 
-	private function _standardize_new_lines()
-	{
-		$strs = array(
-			"My string\rhas return characters"	=> "<p>My string<br />\nhas return characters</p>",
-			'This one does not!' 				=> '<p>This one does not!</p>'
-		);
-
-		foreach ($strs as $str => $expect)
-		{
-			$this->assertEquals($expect, $this->type->auto_typography($str));
-		}
-	}
+	
 
 	// --------------------------------------------------------------------
 
-	private function _reduce_linebreaks()
-	{
-		$str = "This has way too many linebreaks.\n\n\n\nSee?";
-		$expect = "<p>This has way too many linebreaks.</p>\n\n<p>See?</p>";
-
-		$this->assertEquals($expect, $this->type->auto_typography($str, TRUE));
-	}
+	
 
 	// --------------------------------------------------------------------
 
-	private function _remove_comments()
-	{
-		$str = '<!-- I can haz comments? -->  But no!';
-		$expect = '<p><!-- I can haz comments? -->&nbsp; But no!</p>';
-
-		$this->assertEquals($expect, $this->type->auto_typography($str));
-	}
+	
 
 	// --------------------------------------------------------------------
 
-	private function _protect_pre()
-	{
-		$str = '<p>My Sentence</p><pre>var_dump($this);</pre>';
-		$expect = '<p>My Sentence</p><pre>var_dump($this);</pre>';
-
-		$this->assertEquals($expect, $this->type->auto_typography($str));
-	}
+	
 
 	// --------------------------------------------------------------------
 
-	private function _no_opening_block()
-	{
-		$str = 'My Sentence<pre>var_dump($this);</pre>';
-		$expect = '<p>My Sentence</p><pre>var_dump($this);</pre>';
-
-		$this->assertEquals($expect, $this->type->auto_typography($str));
-	}
+	
 
 	// --------------------------------------------------------------------
 
